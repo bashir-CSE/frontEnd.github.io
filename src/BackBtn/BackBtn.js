@@ -6,7 +6,8 @@ function BackBtn() {
 	let history = useHistory();
 
 	function handleClick() {
-		history.push("/");
+		// history.push("/");
+		history.goBack();
 	}
 
 	return (

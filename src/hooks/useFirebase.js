@@ -19,15 +19,13 @@ const useFirebase = () => {
 	const googleProvider = new GoogleAuthProvider();
 
 	const signInUsingGoogle = () => {
-		return signInWithPopup(auth, googleProvider)
-
+		return signInWithPopup(auth, googleProvider);
 	};
 
 	const logout = () => {
-		signOut(auth)
-			.then((user) => {
+		signOut(auth).then((user) => {
 			setUser({});
-			})
+		});
 	};
 
 	useEffect(() => {
@@ -36,7 +34,7 @@ const useFirebase = () => {
 				setUser(user);
 			}
 		});
-  }, []);
+	}, []);
 
 	return {
 		user,

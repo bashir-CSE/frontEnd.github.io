@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import AuthProvider from "./context/AuthProvider";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import DisisDitails from "./Components/LandPage/DisisDitails";
 
 function App() {
 	return (
@@ -50,6 +51,9 @@ function App() {
 						<PrivateRoute exact path='/PharmecyNearMe'>
 							<PharmecyNearMe />
 						</PrivateRoute>
+						<Route exact path='/disisdetails/:id'>
+							<DisisDitails/>
+						</Route>
 						<Route exact path='/login'>
 							<LoginPage />
 						</Route>

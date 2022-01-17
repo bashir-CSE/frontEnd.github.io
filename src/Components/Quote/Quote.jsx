@@ -9,7 +9,6 @@ function Quote() {
 			.then((res) => res.json())
 			.then((json) => setQuotes(json));
 	}, []);
-	console.log(quotes.quote);
 	return (
 		<div className="quote">
 			<Container>

@@ -1,0 +1,7 @@
+.col .card .card-body p {
+  display: block;
+  width: 40ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

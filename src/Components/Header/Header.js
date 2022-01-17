@@ -6,48 +6,70 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Button } from "bootstrap";
 import useAuth from "../../hooks/useAuth";
+import Clock from "react-digital-clock";
 
 function Header() {
 	const { user, logout } = useAuth();
 	return (
-		<Navbar sticky='top' collapseOnSelect expand='lg' bg='dark' variant='dark'>
-			<Container>
-				<Navbar.Brand>
-					<Link to='/'>E-prescription</Link>
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav className='me-auto'>
-						<NavDropdown title='Dropdown' id='collasible-nav-dropdown'>
-							<NavDropdown.Item href='#action/3.2'>
-								edit profile
-							</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item href='#action/3.3'>History</NavDropdown.Item>
-							<NavDropdown.Divider />
-						</NavDropdown>
-					</Nav>
-					<Nav>
-						{!user.email && (
-							<Nav.Link>
-								<Link to='/login'> login </Link>
-							</Nav.Link>
-						)}
-						<Nav.Link href='#deets' className='fs-6 link-light'>
-							{/* <FaUserCircle /> */}
-							{user.email && <small>signed in as: {user.displayName}</small>}
-							<Nav.Link>
-								{user?.email && (
-									<button className='btn-danger btn' onClick={logout}>
-										logout
-									</button>
-								)}
-							</Nav.Link>
-						</Nav.Link>
-					</Nav>
-				</Navbar.Collapse>
-			</Container>
-		</Navbar>
+		<nav class='navbar navbar-expand-lg   navbar-dark bg-dark sticky-top'>
+			<div class='container'>
+				<Link className='navbar-brand' to='/'>
+					E-prescription
+				</Link>
+				<button
+					class='navbar-toggler'
+					type='button'
+					data-bs-toggle='collapse'
+					data-bs-target='#navbarNav'
+					aria-controls='navbarNav'
+					aria-expanded='false'
+					aria-label='Toggle navigation'>
+					<span class='navbar-toggler-icon'></span>
+				</button>
+				<div class='collapse navbar-collapse' id='navbarNav'>
+					{user.email && (
+						<ul class='navbar-nav'>
+							<li class='nav-item dropdown'>
+								<a
+									class='nav-link dropdown-toggle'
+									href='#'
+									id='navbarDropdownMenuLink'
+									role='button'
+									data-bs-toggle='dropdown'
+									aria-expanded='false'>
+									Dropdown link
+								</a>
+								<ul
+									class='dropdown-menu'
+									aria-labelledby='navbarDropdownMenuLink'>
+									<li>
+										<a class='dropdown-item' href='#'>
+											Action
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					)}
+				</div>
+
+				{!user.email && <Link to='/login'> login </Link>}
+
+				<li className='fs-6 nav-item d-flex align-items-center'>
+					{user.email && (
+						<small className='text-light'>
+							signed in as: {user.displayName}
+						</small>
+					)}
+					{user?.email && (
+						<button className='btn-danger btn btn-sm mx-3' onClick={logout}>
+							logout
+						</button>
+					)}
+				</li>
+				<Clock />
+			</div>
+		</nav>
 	);
 }
 
