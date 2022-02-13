@@ -1,4 +1,4 @@
-.col .card .card-body button a {
-  text-decoration: none;
-  text-transform: capitalize;
+.row .col .card {
+	box-shadow: 3px 3px 15px 1px rgb(197, 197, 197);
+	border-radius: 10px !important;
 }
